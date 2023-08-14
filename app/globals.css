@@ -25,3 +25,9 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.bordered-btn {
+  border: 2px solid rgb(34, 197, 94);
+  padding: 4px 10px;
+  text-align: center;
+}
