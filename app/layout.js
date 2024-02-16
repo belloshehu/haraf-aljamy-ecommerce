@@ -2,12 +2,13 @@ import Header from "./_components/Header";
 import "./globals.css";
 import { Inter, Poppins, Ubuntu, Pacifico, Righteous } from "next/font/google";
 import { Providers } from "./GlobalRedux/features/product/provider";
-
+import ToasterContext from "./context/ToasterContext";
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 const ubuntu = Ubuntu({ subsets: ["latin"], weight: ["400", "700"] });
 const pacifico = Pacifico({ subsets: ["latin"], weight: ["400"] });
 const righteous = Righteous({ subsets: ["latin"], weight: ["400"] });
+import AuthContextProvider from "./context/AuthContext";
 
 export const metadata = {
   title: "Create Next App",
@@ -17,12 +18,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
-        <Header />
-        <main>
-          <Providers>{children}</Providers>
-        </main>
-      </body>
+      <AuthContextProvider>
+        <body className={poppins.className}>
+          <Header />
+          <main>
+            <ToasterContext />
+            <Providers>{children}</Providers>
+          </main>
+        </body>
+      </AuthContextProvider>
     </html>
   );
 }

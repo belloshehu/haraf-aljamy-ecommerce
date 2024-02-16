@@ -1,7 +1,7 @@
 "use client";
 
 import { createSlice } from "@reduxjs/toolkit";
-import { products } from "@/app/data";
+import { products } from "../../../data";
 
 const productSlice = createSlice({
   name: "product",
