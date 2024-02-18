@@ -6,7 +6,7 @@ const AutoplaySlider = withAutoplay(AwesomeSlider);
 
 export default function Slider() {
   return (
-    <div>
+    <div className="w-full shadow-2xl">
       <AutoplaySlider
         play={true}
         cancelOnInteraction={false} // should stop playing on user interaction
@@ -14,15 +14,13 @@ export default function Slider() {
         animation="foldOutAnimation"
         media={[
           {
-            source: "/images/bread1.jpg",
+            source: "/images/bakery.jpg",
           },
           {
-            source: "/images/bread3.jpg",
+            source: "/images/spices.jpg",
           },
-          {
-            source: "/images/conf3.jpg",
-          },
-        ]}></AutoplaySlider>
+        ]}
+      />
     </div>
   );
 }

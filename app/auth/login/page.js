@@ -2,7 +2,7 @@
 import Heading from "../../_components/Heading";
 import React from "react";
 import LoginForm from "../../_components/LoginForm";
-import { Brand } from "../../_components/Brand";
+import { AuthSideImages } from "../../_components/AuthSideImages";
 import { AuthHeader } from "../../_components/AuthHeader";
 
 const LoginPage = () => {
@@ -13,6 +13,7 @@ const LoginPage = () => {
           <AuthHeader authTitle={"Login"} />
           <LoginForm />
         </div>
+        <AuthSideImages />
       </div>
     </div>
   );

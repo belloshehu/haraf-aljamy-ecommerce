@@ -19,3 +19,16 @@
     @apply text-sm absolute whitespace-normal scale-0 group-hover:scale-100 -top-8 border-2 right-5 z-40 py-0 p-2 rounded-full bg-green-300 text-cyan-800 transition-all duration-150 min-w-max;
   }
 }
+
+.hero {
+  background: url("/images/bakerry.jpg") no-repeat fixed;
+  background-size: cover;
+  background-blend-mode: overlay;
+  background-position: left;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.footer li {
+  color: gainsboro;
+  margin-bottom: 5px;
+}

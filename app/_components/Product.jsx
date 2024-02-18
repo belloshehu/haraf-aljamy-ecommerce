@@ -31,7 +31,9 @@ export default function Product({ id, name, image, price, status, discount }) {
       <div className="absolute bottom-0 z-20 flex flex-col w-full">
         <div className="flex justify-between items-center gap-2 mb-1  absolute w-full bottom-0 group-hover:bottom-10">
           <div className="flex items-center gap-2 bg-black  bg-opacity-80 p-1">
-            <h4 className="text-primary">{name}</h4>
+            <Link href={`/product/${id}`}>
+              <h4 className="text-primary">{name}</h4>
+            </Link>
             <h4 className="text-slate-100">#{price}</h4>
           </div>
           <div className="flex items-center px-2">

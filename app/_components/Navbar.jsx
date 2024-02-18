@@ -4,9 +4,11 @@ import Link from "next/link";
 import { FaShoppingCart, FaBars, FaChevronDown } from "react-icons/fa";
 import NavItems from "./NavItem";
 import { useSession, signOut } from "next-auth/react";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const { data: session } = useSession();
+  const { carts } = useSelector((store) => store.cart);
   return (
     <nav className="rounded-sm hidden lg:flex justify-between lg:w-2/3 items-center ">
       <ul className="list-none flex flex-row gap-5 items-start lg:items-center">
@@ -20,12 +22,12 @@ export default function Navbar() {
         </li>
       </ul>
 
-      <div className="relative">
-        <span className="absolute -top-0 text-lg -right-2 bg-white text-primary rounded-full w-5 h-5 text-center">
-          0
+      <Link className="relative" href={"/carts"}>
+        <span className="flex items-center justify-center absolute -top-2 bg-opacity-75 -right-5 bg-black text-primary rounded-full w-8 h-8 text-center">
+          <small>{carts.length}</small>
         </span>
         <FaShoppingCart className="text-3xl text-green-300" />
-      </div>
+      </Link>
 
       {session?.user ? (
         <ul className="list-none flex gap-3 items-center">

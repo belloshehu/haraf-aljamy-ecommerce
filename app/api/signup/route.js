@@ -6,11 +6,9 @@ import { StatusCodes } from "http-status-codes";
 const prisma = new PrismaClient();
 
 export async function POST(request) {
-  console.log("signup");
   try {
     const body = await request.json();
     const { firstName, lastName, email, password } = body;
-    console.log(body);
 
     if (!email) {
       return NextResponse.json(

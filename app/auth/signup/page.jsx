@@ -5,6 +5,7 @@ import SignupForm from "../../_components/SignupForm";
 import { Brand } from "../../_components/Brand";
 import { AuthHeader } from "../../_components/AuthHeader";
 import { useSession } from "next-auth/react";
+import { AuthSideImages } from "../../_components/AuthSideImages";
 
 const SignupPage = () => {
   const { session } = useSession();
@@ -15,6 +16,7 @@ const SignupPage = () => {
           <AuthHeader authTitle={"Signup"} />
           <SignupForm />
         </div>
+        <AuthSideImages />
       </div>
     </div>
   );
