@@ -12,7 +12,7 @@ export default function FeaturedProducts() {
       </h1>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {products.map((product, index) => (
-          <Product {...product} key={index} />
+          <Product product={product} key={index} />
         ))}
       </div>
     </section>

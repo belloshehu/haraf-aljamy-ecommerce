@@ -1,8 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingBag, FaShoppingCart } from "react-icons/fa";
+import { addCartItem, addToCart } from "../GlobalRedux/features/cart/cartSlice";
+import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
-export default function Product({ id, name, image, price, status, discount }) {
+export default function Product({ product }) {
+  const dispatch = useDispatch();
+  const { data: session } = useSession();
+  const router = useRouter();
+  const { id, name, image, price, status, discount } = product;
+
+  const handleAddToShoppingCart = () => {
+    if (session) {
+      dispatch(addCartItem(product));
+      toast.success(`Added ${product?.name} to shopping cart`);
+    } else {
+      router.push("/auth/login");
+    }
+  };
+
   return (
     <article className="relative flex group flex-col gap-2 w-full shadow-xl max-h-[500px] bg-slate-100 hover:shadow-lg hover:scale-105 duration-200 transition-all">
       <Image
@@ -36,9 +55,11 @@ export default function Product({ id, name, image, price, status, discount }) {
             </Link>
             <h4 className="text-slate-100">#{price}</h4>
           </div>
-          <div className="flex items-center px-2">
+          <div
+            className="flex items-center justify-between gap-3 px-2 cursor-pointer bg-cyan-200 p-1"
+            onClick={handleAddToShoppingCart}>
             <small className="">add to cart</small>
-            <FaShoppingCart className="text-black text-2xl" />
+            <FaShoppingBag className="text-xl text-cyan-900" />
           </div>
         </div>
 

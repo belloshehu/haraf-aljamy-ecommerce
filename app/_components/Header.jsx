@@ -5,6 +5,7 @@ import { Righteous } from "next/font/google";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Brand } from "./Brand";
+import CartNavItem from "./CartNavItem";
 
 const righteous = Righteous({ subsets: ["latin"], weight: ["400"] });
 
@@ -25,7 +26,10 @@ export default function Header() {
         </Link>
       </div>
       <Navbar />
-      <FaShoppingCart className="text-3xl text-green-500 place-self-end block lg:hidden" />
+      <div className="block lg:hidden">
+        <CartNavItem />
+      </div>
+      {/* <FaShoppingCart className="text-3xl text-green-500 place-self-end block lg:hidden" /> */}
       <FaBars className="block lg:hidden text-3xl" />
     </header>
   );

@@ -6,6 +6,7 @@ import { ProductQuantityField } from "../../_components/ProductQuantityField";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedProduct } from "../../GlobalRedux/features/product/productSlice";
 import { addToCart } from "../../GlobalRedux/features/cart/cartSlice";
+import { getPriceWithoutDiscount } from "../../utils/product";
 
 const getProduct = async (id) => {
   return products.filter((product) => product.id === id)[0];
@@ -24,9 +25,6 @@ async function ProductDetailPage({ params }) {
     })();
   }, []);
 
-  const getPriceWithoutDiscount = () => {
-    return product?.price + (product?.price * product?.discount) / 100;
-  };
   return (
     <section className="w-full p-5 md:p-20">
       <div className="w-full flex flex-col md:flex-row gap-8">
@@ -68,7 +66,7 @@ async function ProductDetailPage({ params }) {
           <div className="flex items-center justify-start gap-5 p-0">
             <p className="text-xl">N{product?.price}</p>
             <p className="text-xl text-slate-400 line-through">
-              N{getPriceWithoutDiscount()}
+              N{getPriceWithoutDiscount(product?.price, product?.discount)}
             </p>
             <h3 className=" bg-cyan-100 p-1 rounded-md text-cyan-500">
               {product?.discount}% off

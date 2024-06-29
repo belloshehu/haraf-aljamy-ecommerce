@@ -45,4 +45,24 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  cartItems CartItem[]
+}
+
+model Product {
+  id            String    @id   @default(auto())  @map("_id")  @db.ObjectId
+  name          String
+  price         Int
+  stock         Int
+  description   String 
+  discount      Int
+  image         String 
+  thumbNails    String?
+}
+
+model CartItem {
+  id            String    @id   @default(auto())  @map("_id")  @db.ObjectId
+  productId     String    @db.ObjectId
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        String    @unique @db.ObjectId
+  quantity      Int       @default(1)
 }
